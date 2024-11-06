@@ -14,8 +14,11 @@ async function fetchPlaylist(){
 
   res = await fetch(req);
   json = await res.json();
-  await console.log(json.items[1].snippet.title);
-
+  for (let i= 0; i< maxResults; i++) {
+    music = await json.items[i].snippet.title;
+    await console.log(music);
+    document.getElementById('root').innerHTML += await `<p>${music}</p>`;
+  }
 }
 
 fetchPlaylist();
